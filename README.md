@@ -6,6 +6,7 @@ Example of how to setup a simple API and protect it with AUTH0 and how to access
 See: 
 https://getcomposer.org/download/
 https://auth0.com/docs/quickstart/backend/php/01-authorization
+https://auth0.com/docs/manage-users/access-control/configure-core-rbac/rbac-users/view-user-permissions
 
 ### Composer install at websever
 
@@ -25,6 +26,8 @@ php composer.phar require auth0/auth0-php steampixel/simple-php-router vlucas/ph
 
 See:
 https://auth0.com/docs/quickstart/webapp/php
+https://jwt.io/
+https://community.auth0.com/t/auth0-php-regular-web-app-api/108734/12
 
 ### Composer install at websever
 

@@ -56,14 +56,14 @@ Route::add('/', function() use ($auth0) {
         // The user is logged in.
         echo "<h2>Session data ouput</h2>";
         echo '<pre>';
-        print_r($session->user);
+        print_r($session);
         echo '</pre>';
         // AccessToken
         echo "<h2>Access Token</h2>";
         echo '<pre>';
         print_r($session->accessToken);
         echo '</pre>';
-        
+                
         // Get a JWT 
         // https://community.auth0.com/t/why-is-my-access-token-not-a-jwt-opaque-token/31028
         echo "<h2>JWT Token</h2>";
@@ -98,7 +98,7 @@ Route::add('/', function() use ($auth0) {
     
         }
         echo '</pre>';
-
+        
         // Connect to API and print answer 
         echo "<h2>Access API and print answer</h2>";
         echo '<pre>';
@@ -113,7 +113,8 @@ Route::add('/', function() use ($auth0) {
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "GET",
           CURLOPT_HTTPHEADER => array(
-            "authorization: Bearer $response->access_token"
+            "authorization: Bearer $response->access_token",
+            "authorization-user: $session->idToken"
           ),
         ));
         
