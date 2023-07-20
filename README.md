@@ -22,7 +22,7 @@ php -r "unlink('composer-setup.php');"
 php composer.phar require auth0/auth0-php steampixel/simple-php-router vlucas/phpdotenv
 ```
 
-## Test setup
+## Frontend-PHP setup
 
 See: <br>
 https://auth0.com/docs/quickstart/webapp/php <br>
@@ -41,3 +41,7 @@ php -r "unlink('composer-setup.php');"
 
 php composer.phar require auth0/auth0-php steampixel/simple-php-router vlucas/phpdotenv
 ```
+
+## Frontend-Vue setup
+
+See separate REDME file.

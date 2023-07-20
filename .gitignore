@@ -21,3 +21,8 @@ pnpm-debug.log*
 
 # Composer modules
 **/vendor
+
+# Vue 
+**/node_modules
+*package-lock.json
+*auth_config.json
