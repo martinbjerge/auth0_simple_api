@@ -42,21 +42,29 @@ export default {
       this.$auth.loginWithRedirect()
     },
     async api () {
-      const audience = AuthConfig.audience
-      const api = AuthConfig.api
-      const idToken = await this.$auth.getIdTokenClaims()
-      const accessToken = await this.$auth.getTokenSilently({ audience: audience, detailedResponse: true })
+      const ConfAudience = AuthConfig.audience
+      const ConfApi = AuthConfig.api
+      const differentAudienceOptions = {
+        authorizationParams: {
+          audience: ConfAudience,
+          scope: 'read:all',
+          redirect_uri: 'http://localhost:8080'
+        }
+      }
+      const accessToken = await this.$auth.getTokenWithPopup(differentAudienceOptions)
       console.log('AccessToken:')
       console.log(accessToken)
-      console.log('Bearer ' + accessToken.id_token)
+      const idToken = await this.$auth.getIdTokenClaims()
       console.log('idToken:')
       console.log(idToken)
       console.log(idToken.__raw)
 
-      const result = await fetch(api, {
+      console.log('Bearer ' + idToken.__raw)
+
+      const result = await fetch(ConfApi, {
         method: 'GET',
         headers: {
-          Authorization: 'Bearer ' + accessToken.id_token
+          Authorization: 'Bearer ' + idToken.__raw
         }
       })
       this.api_data = await result.text()

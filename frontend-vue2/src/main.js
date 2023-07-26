@@ -13,15 +13,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { BootstrapVue } from 'bootstrap-vue'
 
 // Install the authentication plugin here
-const domain = AuthConfig.domain
-const clientId = AuthConfig.clientId
-const audience = AuthConfig.audience
+const ConfDomain = AuthConfig.domain
+const ConfClientId = AuthConfig.clientId
 Vue.use(Auth0Plugin, {
-  domain,
-  clientId,
-  authorizationParams: {
-    audience: audience
-  },
+  domain: ConfDomain,
+  clientId: ConfClientId,
   onRedirectCallback: appState => {
     router.push(
       appState && appState.targetUrl

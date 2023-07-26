@@ -45,6 +45,8 @@ Guide to php based API's: https://auth0.com/docs/quickstart/backend/php/01-autho
 
 ## Usefull how to's
 
+https://auth0.com/docs/libraries/auth0-single-page-app-sdk#get-access-token-for-a-different-audience
+
 https://code.tutsplus.com/tutorials/authentication-and-authorization-using-auth0-in-php--cms-31134
 
 https://developer.auth0.com/resources/guides/spa/vue/basic-authentication

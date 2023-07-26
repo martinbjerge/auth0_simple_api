@@ -26,3 +26,5 @@ pnpm-debug.log*
 **/node_modules
 *package-lock.json
 *auth_config.json
+.DS_Store
+**/dist
