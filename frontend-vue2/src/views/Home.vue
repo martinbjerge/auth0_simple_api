@@ -8,17 +8,22 @@
     <!-- Check that the SDK client is not currently loading before accessing is methods -->
     <div v-if="!$auth.loading">
       <!-- show login when not authenticated -->
-      <p v-if="!$auth.isAuthenticated">To access data, you need to login. You can use your Google- or Facebook-account:</p>
-      <b-button variant="primary" size="lg" v-if="!$auth.isAuthenticated" @click="login">Login</b-button>
-      <!-- show logout when authenticated -->
-      <p v-if="$auth.isAuthenticated"> Now you can also logout again:</p>
-      <div>
-      <pre>{{ JSON.stringify($auth.user, null, 2) }}</pre>
-      <pre>{{ api_data }}</pre>
+      <div v-if="!$auth.isAuthenticated">
+        <p>To access data, you need to login. You can use your Google- or Facebook-account:</p>
+        <b-button variant="primary" size="lg" @click="login">Login</b-button>
       </div>
-
-      <b-button variant="primary" size="lg" v-if="$auth.isAuthenticated" @click="logout">Logout</b-button>
-      <b-button variant="primary" size="lg" v-if="$auth.isAuthenticated" @click="api">API</b-button>
+      <!-- show logout when authenticated -->
+      <div v-if="$auth.isAuthenticated">
+        <p> Now you can also logout again:</p>
+        <b-button variant="primary" size="lg" @click="logout">Logout</b-button>
+        <div>
+          <h3>User info:</h3>
+          <pre>{{ JSON.stringify($auth.user, null, 2) }}</pre>
+          <b-button variant="primary" size="lg" @click="api">API</b-button>
+          <h3>API answer:</h3>
+          <pre>{{ api_data }}</pre>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -48,23 +53,17 @@ export default {
         authorizationParams: {
           audience: ConfAudience,
           scope: 'read:all',
-          redirect_uri: 'http://localhost:8080'
+          redirect_uri: window.location.origin
         }
       }
-      const accessToken = await this.$auth.getTokenWithPopup(differentAudienceOptions)
+      const accessToken = await this.$auth.getTokenSilently(differentAudienceOptions)
       console.log('AccessToken:')
       console.log(accessToken)
-      const idToken = await this.$auth.getIdTokenClaims()
-      console.log('idToken:')
-      console.log(idToken)
-      console.log(idToken.__raw)
-
-      console.log('Bearer ' + idToken.__raw)
 
       const result = await fetch(ConfApi, {
         method: 'GET',
         headers: {
-          Authorization: 'Bearer ' + idToken.__raw
+          Authorization: 'Bearer ' + accessToken
         }
       })
       this.api_data = await result.text()

@@ -45,11 +45,15 @@ Guide to php based API's: https://auth0.com/docs/quickstart/backend/php/01-autho
 
 ## Usefull how to's
 
+https://community.auth0.com/t/auth0-spa-js-get-jwt-for-api-access-with-correct-audience/111486/
+
 https://auth0.com/docs/libraries/auth0-single-page-app-sdk#get-access-token-for-a-different-audience
 
 https://code.tutsplus.com/tutorials/authentication-and-authorization-using-auth0-in-php--cms-31134
 
 https://developer.auth0.com/resources/guides/spa/vue/basic-authentication
+
 https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-proof-key-for-code-exchange-pkce
+
 https://auth0.com/docs/microsites/call-api/call-api-single-page-app
 
