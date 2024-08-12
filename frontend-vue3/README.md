@@ -26,6 +26,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Usefull links
 
+https://nodejs.org/en/download/prebuilt-installer
+
 https://vuejsexamples.com/a-simple-and-pretty-navbar-for-your-vue-projects/
 
 
